@@ -36,8 +36,12 @@ class DoubleMoon {
      */
     sample(n) {
         let eachSampleCount = n >> 1;
+        let gap = this.radius * 2;
         
         // sample up single moon
-
+        // first randomly sample x, then based on this x, get scope of y, and randomly pick one value
+        for (let index = 0; index < eachSampleCount; index++) {
+            let x = Math.random() * gap - this.radius;
+        }
     }
 } 
