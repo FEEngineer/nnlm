@@ -37,11 +37,30 @@ class DoubleMoon {
     sample(n) {
         let eachSampleCount = n >> 1;
         let gap = this.radius * 2;
-        
+
         // sample up single moon
         // first randomly sample x, then based on this x, get scope of y, and randomly pick one value
         for (let index = 0; index < eachSampleCount; index++) {
             let x = Math.random() * gap - this.radius;
+
+            let rMax = this.radius;
+            let rMin = this.radius - this.width;
+
+
+            let yMax = Math.sqrt(Math.pow(rMax, 2) - Math.pow(x, 2));
+            let yMin = 0;
+
+            if (Math.abs(rMin) > Math.abs(x)) {
+                yMin = Math.sqrt(Math.pow(rMin, 2) - Math.pow(x, 2));
+            }
+
+            let y = yMin + (yMax - yMin) * Math.random();
+
+            console.log("x is ", x, " and y is ", y);
         }
     }
-} 
+}
+
+let doubleMoon = new DoubleMoon(10, 2, 0);
+
+doubleMoon.sample(10);
